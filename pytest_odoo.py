@@ -19,7 +19,8 @@ import _pytest.python
 import pytest
 
 import odoo
-
+if not hasattr(odoo, "tools"):
+    from odoo import tools, service, release, api, tests, sql_db, modules
 
 def pytest_addoption(parser):
     parser.addoption("--odoo-database",
