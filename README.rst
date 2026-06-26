@@ -37,6 +37,11 @@ The custom options are:
 * ``--odoo-http``: Allow to launch the Odoo http instance
 * ``--odoo-skip-at-install``: use to skip tests that are decorated with `@tagged("at_install")` (*Note*: this is not the default behavior because Odoo set this tag by default if not defined).
 
+.. note::
+
+    While using ``--odoo-http`` with queue_job module active (for instance during CI)
+    it's possible to face some deadlocks issues. In that case, you should ensure to disable this
+    module in your test configuration file (e.g. via environment variable ``ODOO_QUEUE_JOB_CHANNELS=root:0``).
 
 Alternatively, you can use environment variables, like the Odoo Docker image:
 

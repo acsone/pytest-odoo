@@ -115,7 +115,7 @@ def _get_available_random_port():
         s.bind(("127.0.0.1", 0))
         return s.getsockname()[1]
 
-@pytest.fixture(scope="module", autouse=True)
+@pytest.fixture(scope="session", autouse=True)
 def load_http(request):
     if request.config.getoption("--odoo-http"):
         odoo.tools.config['http_port'] = _get_available_random_port()
